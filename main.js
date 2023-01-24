@@ -59,7 +59,6 @@ formEl.addEventListener("submit", async (e) => {
 
 /** 클릭 했을 때 수정 및 데이터 지우기 */
 listEl.addEventListener("click", async (e) => {
-  console.log(e.target.className);
   viewMore(e);
   changeMode(e);
   editTodo(e);
@@ -82,7 +81,34 @@ function viewMore(e) {
   });
 }
 // Sortablejs
-Sortable.create(listEl, {});
+Sortable.create(listEl, {
+  onEnd: async function (e) {
+    const itemElements = e.to.children;
+    const promises = Array.prototype.map.call(
+      itemElements,
+      async (item, order) => {
+        const id = item.getAttribute("data-id");
+        const done = item.getAttribute("data-done");
+        const txt = item.querySelector(".txt");
+        const title = txt.innerHTML;
+        const putUrl = `${url}/${id}`;
+        const res = await fetch(putUrl, {
+          method: "PUT",
+          headers: headers,
+          body: JSON.stringify({
+            title,
+            done,
+            order,
+          }),
+        });
+        return await res.json();
+      }
+    );
+    await Promise.all(promises).then(() => {
+      getTodos();
+    });
+  },
+});
 
 // 전체 선택 또는 해제
 const allBtn = get(".all-check");
@@ -106,15 +132,32 @@ async function addTodo(title) {
   todoInput.value = "";
   todoInput.focus();
 }
-
 /** Todo item 렌더링 하는 함수 */
 async function renderTodos(todos) {
+  todos.sort(function (a, b) {
+    if (a.done === true || a.done === "true") {
+      return (a = -1);
+    } else if (b.done === false || b.done === "false") {
+      return (a = 1);
+    }
+  });
+
   const liEls = todos.map((todo) => {
     const liEl = createEl("div");
-    const isChecked = todo.done ? "checked" : "";
+    let isChecked;
+    if (todo.done === true || todo.done === "true") {
+      isChecked = "checked";
+    } else if (todo.done === false || todo.done === "false") {
+      isChecked = "";
+    }
     liEl.classList.add("item");
-    const createdAt = todo.createdAt;
-    const updatedAt = todo.updatedAt;
+    const createdAt = new Date(todo.createdAt).toLocaleString("ko-KR", {
+      timeZone: "Asia/Seoul",
+    });
+    const updatedAt = new Date(todo.updatedAt).toLocaleString("ko-KR", {
+      timeZone: "Asia/Seoul",
+    });
+    console.log(createdAt);
 
     const contents = createEl("div");
     const todoTitle = createEl("div");
@@ -131,8 +174,8 @@ async function renderTodos(todos) {
           <div class="txt">${todo.title}</div>
           <div class="date-btn">
             <div class="date">
-              <div class="createdAt">${createdAt.slice(0, 10)}</div>
-              <div class="updateAt">${updatedAt.slice(0, 10)}</div>
+              <div class="createdAt">생성일 : ${createdAt.slice(0, 24)}</div>
+              <div class="updateAt">수정일 : ${updatedAt.slice(0, 24)}</div>
             </div>
             <div class="button">Close</div>
           </div>
@@ -203,7 +246,6 @@ async function renderTodos(todos) {
 
     liEl.dataset.id = todo.id;
     liEl.dataset.done = todo.done;
-    liEl.dataset.order = todo.order;
     return liEl;
   });
   listEl.innerHTML = "";
@@ -279,6 +321,7 @@ async function checkToggleTodo(e) {
   const item = e.target.closest(".item");
   const id = item.dataset.id;
   const done = e.target.checked;
+  item.setAttribute("data-done", done);
   const editInput = item.querySelector('input[type="text"]');
   const value = editInput.value;
   const loadEl = item.querySelector(".checked-spin");
@@ -310,8 +353,10 @@ function allCheck() {
 
     if (chackValue === true) {
       done = true;
+      item.setAttribute("data-done", true);
     } else {
       done = false;
+      item.setAttribute("data-done", false);
     }
     const editInput = item.querySelector('input[type="text"]');
     const value = editInput.value;
@@ -338,12 +383,6 @@ function checkRemove() {
     checkSpinEl.style.display = "block";
     const item = i.closest(".item");
     const id = item.dataset.id;
-    let done = i.checked;
-    if (done !== true) {
-      done = true;
-    } else {
-      done = false;
-    }
     const editInput = item.querySelector('input[type="text"]');
     const value = editInput.value;
     await fetch(`${url}/${id}`, {
@@ -351,7 +390,6 @@ function checkRemove() {
       headers,
       body: JSON.stringify({
         title: value,
-        done,
       }),
     });
   });
