@@ -33,6 +33,7 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "cors": "^2.8.5",
     "sortablejs": "^1.15.0"
   }
 }
