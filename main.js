@@ -1,4 +1,6 @@
 import Sortable from "./node_modules/sortablejs/Sortable";
+import swal from "sweetalert";
+
 const headers = {
   "Content-Type": "application/json",
   apikey: "FcKdtJs202301",
@@ -69,16 +71,16 @@ listEl.addEventListener("click", async (e) => {
 /** 자세히보기 */
 function viewMore(e) {
   if (e.target.className !== "item") return;
-  const viewbg = e.target.querySelector(".view-bg");
-  const viewEl = e.target.querySelector(".view-more");
-  const cancleBtn = e.target.querySelector(".button");
-  viewbg.style.display = "block";
-  viewEl.style.display = "block";
-
-  cancleBtn.addEventListener("click", (e) => {
-    viewbg.style.display = "none";
-    viewEl.style.display = "none";
-  });
+  const title = e.target.getAttribute("data-title");
+  const created = e.target.getAttribute("data-created-at");
+  const update = e.target.getAttribute("data-update-at");
+  swal(
+    `${title}`,
+    `${created}
+  ${update}`,
+    "info"
+  );
+  console.log(e.target.className);
 }
 // Sortablejs
 Sortable.create(listEl, {
@@ -89,9 +91,9 @@ Sortable.create(listEl, {
       async (item, order) => {
         const id = item.getAttribute("data-id");
         const done = item.getAttribute("data-done");
-        const txt = item.querySelector(".txt");
-        const title = txt.innerHTML;
+        const title = item.getAttribute("data-title");
         const putUrl = `${url}/${id}`;
+        console.log(order);
         const res = await fetch(putUrl, {
           method: "PUT",
           headers: headers,
@@ -157,31 +159,17 @@ async function renderTodos(todos) {
     const updatedAt = new Date(todo.updatedAt).toLocaleString("ko-KR", {
       timeZone: "Asia/Seoul",
     });
-    console.log(createdAt);
-
+    liEl.innerHTML = /* html */ `
+    <div class="checked-spin spinner-border spinner-border-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+  </div>
+      `;
     const contents = createEl("div");
     const todoTitle = createEl("div");
     const todoCheckBox = createEl("input");
     const editInputBox = createEl("input");
     const label = createEl("label");
-    liEl.innerHTML = /* html */ `
-      <div class="checked-spin spinner-border spinner-border-sm" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-      <div class="view-bg nodrag" >
-        <div class="view-more nodrag" >
-          <div class="title">Todo</div>
-          <div class="txt">${todo.title}</div>
-          <div class="date-btn">
-            <div class="date">
-              <div class="createdAt">생성일 : ${createdAt.slice(0, 24)}</div>
-              <div class="updateAt">수정일 : ${updatedAt.slice(0, 24)}</div>
-            </div>
-            <div class="button">Close</div>
-          </div>
-        </div>
-      </div>
-    `;
+
     const contentsBtns = createEl("div");
     const editBtns = createEl("div");
     const todoEditBtn = createEl("button");
@@ -244,6 +232,9 @@ async function renderTodos(todos) {
     );
     liEl.append(contents);
 
+    liEl.dataset.title = todo.title;
+    liEl.dataset.createdAt = `생성일 : ${createdAt.slice(0, 24)}`;
+    liEl.dataset.updateAt = `수정일 : ${updatedAt.slice(0, 24)}`;
     liEl.dataset.id = todo.id;
     liEl.dataset.done = todo.done;
     return liEl;
@@ -325,6 +316,7 @@ async function checkToggleTodo(e) {
   const editInput = item.querySelector('input[type="text"]');
   const value = editInput.value;
   const loadEl = item.querySelector(".checked-spin");
+  console.log(loadEl);
   loadEl.style.display = "block";
   await fetch(`${url}/${id}`, {
     method: "PUT",
