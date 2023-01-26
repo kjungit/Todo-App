@@ -80,7 +80,6 @@ function viewMore(e) {
   ${update}`,
     "info"
   );
-  console.log(e.target.className);
 }
 // Sortablejs
 Sortable.create(listEl, {
@@ -93,7 +92,6 @@ Sortable.create(listEl, {
         const done = item.getAttribute("data-done");
         const title = item.getAttribute("data-title");
         const putUrl = `${url}/${id}`;
-        console.log(order);
         const res = await fetch(putUrl, {
           method: "PUT",
           headers: headers,
@@ -136,14 +134,6 @@ async function addTodo(title) {
 }
 /** Todo item 렌더링 하는 함수 */
 async function renderTodos(todos) {
-  todos.sort(function (a, b) {
-    if (a.done === true || a.done === "true") {
-      return (a = -1);
-    } else if (b.done === false || b.done === "false") {
-      return (a = 1);
-    }
-  });
-
   const liEls = todos.map((todo) => {
     const liEl = createEl("div");
     let isChecked;
@@ -159,6 +149,7 @@ async function renderTodos(todos) {
     const updatedAt = new Date(todo.updatedAt).toLocaleString("ko-KR", {
       timeZone: "Asia/Seoul",
     });
+
     liEl.innerHTML = /* html */ `
     <div class="checked-spin spinner-border spinner-border-sm" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -316,7 +307,6 @@ async function checkToggleTodo(e) {
   const editInput = item.querySelector('input[type="text"]');
   const value = editInput.value;
   const loadEl = item.querySelector(".checked-spin");
-  console.log(loadEl);
   loadEl.style.display = "block";
   await fetch(`${url}/${id}`, {
     method: "PUT",
