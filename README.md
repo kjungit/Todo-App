@@ -1,278 +1,159 @@
+[작업한 데모 사이트](https://creative-buttercream-aa60ae.netlify.app/)
+
+---
+
+---
+
 # 📌 할 일 관리(Todo)
 
-- 과제 기한:
-  - 과제 수행 기간: 2023년 01월 16일(월) ~ 2023년 01월 27일(금)
-  - 서로 리뷰 기간: 2023년 01월 30일(월) ~ 2023년 02월 03일(금)
-- 내용:
-  - 주어진 API를 활용해 '[완성 예시](https://beautiful-daifuku-b9462c.netlify.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!
+- 작업 내용:
+  - 주어진 API를 활용해 Todo list 구현
+  - Todo 아이템 추가 및 수정, 제거 기능 구현
+  - 생성날짜, 수정날짜 데이터 구현 (한국 시간)
+  - 전체선택, 해제, 삭제 구현
+  - 생성 로딩, 전체선택 및 개별선택 로딩 구현
+  - 완료된 목록, 비완료 목록 구분하여 볼 수 있도록 구현
+  - SortableJS 라이브러리를 통해 Grid 순서 변경 구현(변경한 순서 저장)
+  - 완료한 목록들은 상단으로 정렬
 
-## 요구사항
+---
 
-필수 요구사항은 꼭 달성해야 하는 목표로, 수정/삭제는 불가하고 추가는 가능합니다.    
-선택 요구사항은 단순 예시로, 자유롭게 추가/수정/삭제해서 구현해보세요.  
-각 요구사항은 달성 후 마크다운에서 `- [x]`로 표시하세요.
+- 사용 언어: HTML, SCSS, JS
+
+---
 
 ### ❗ 필수
 
-- [ ] 할 일 목록(List)이 출력돼야 합니다.
-- [ ] 할 일 항목(Item)을 새롭게 추가할 수 있어야 합니다.
-- [ ] 할 일 항목을 수정할 수 있어야 합니다.
-- [ ] 할 일 항목을 삭제할 수 있어야 합니다.
-- [ ] jQuery, React, Vue 등 JS 라이브러리와 프레임워크는 사용하지 않아야 합니다.
-- [ ] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
+- [x] 할 일 목록(List)이 출력돼야 합니다.
+- [x] 할 일 항목(Item)을 새롭게 추가할 수 있어야 합니다.
+- [x] 할 일 항목을 수정할 수 있어야 합니다.
+- [x] 할 일 항목을 삭제할 수 있어야 합니다.
+- [x] jQuery, React, Vue 등 JS 라이브러리와 프레임워크는 사용하지 않아야 합니다.
+- [x] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
 
 ### ❔ 선택
 
-- [ ] 할 일 항목의 순서를 바꿀 수 있도록 만들어보세요.([SortableJS](http://sortablejs.github.io/Sortable/))
-- [ ] 할 일을 완료하지 않은 항목과 완료한 항목을 분류해서 출력해보세요.
-- [ ] 할 일을 완료한 항목을 한 번에 삭제할 수 있도록 만들어보세요.
-- [ ] 할 일 항목의 최신 수정일을 표시해보세요.
-- [ ] 할 일 목록이 출력되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- [ ] 기타 동작이 완료되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- [ ] 차별화가 가능하도록 프로젝트를 최대한 예쁘게 만들어보세요.
-- [ ] 할 일과 관련된 기타 기능도 고려해보세요.
+- [x] 할 일 항목의 순서를 바꿀 수 있도록 만들어보세요.([SortableJS](http://sortablejs.github.io/Sortable/))
+- [x] 할 일을 완료하지 않은 항목과 완료한 항목을 분류해서 출력해보세요.
+- [x] 할 일을 완료한 항목을 한 번에 삭제할 수 있도록 만들어보세요.
+- [x] 할 일 항목의 최신 수정일을 표시해보세요.
+- [x] 할 일 목록이 출력되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
+- [x] 기타 동작이 완료되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
+- [x] 차별화가 가능하도록 프로젝트를 최대한 예쁘게 만들어보세요.
 
-## 과제 수행 방법
+---
 
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-1. 자신의 본명(E.g, `ParkYoungWoong`)으로 브랜치를 생성합니다.(본명을 꼭 파스칼케이스로 표시하세요!)
-1. 자신의 본명 브랜치에서 과제를 수행합니다.
-1. 과제 수행이 끝나면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(`main` 브랜치에 푸시하지 않도록 꼭 주의하세요!)
-1. 저장소에서 `main` 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, `main` <== `ParkYoungWoong`)
+---
 
-- Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-- 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 강사에서 얘기해주세요!
-- 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
+## 데모 사이트 소개
 
-## API 사용법
+---
 
-요청 주소(Endpoint)
+### 🔗 Todo item 추가
 
-```curl
-https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos
-```
+![항목추가](https://drive.google.com/uc?id=15sz-Lt1dCuPJFmVK59KKbDcZnSiQ-kcN)
 
-모든 API 요청(Request) `headers`에 아래 정보가 꼭 포함돼야 합니다!  
-`username`은 `KDT4_ParkYoungWoong`와 같이 본명을 포함해야 합니다!  
-확인할 수 없는 사용자의 DB 정보는 임의로 삭제될 수 있습니다!
+- Todo item 추가 구현
+- 로딩 애니메이션 구현
 
-API 사용 예시:
+</br>
 
-```js
-async function createTodo() {
-  const res = await fetch('https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'apikey': 'FcKdtJs202301',
-      'username': 'KDT4_ParkYoungWoong'
-    },
-    body: JSON.stringify({
-      title: '아침 먹기!'
-    })
-  })
-  const json = await res.json()
-  console.log(json)
+---
 
-  return json
-}
-```
+### 📌 Todo item 수정
 
-### 목록 조회
+![수정](https://drive.google.com/uc?id=1xdQDDjEKdI8lW0PZy1WvvgA_pmKGa-K6)
 
-전체 할 일 목록을 조회합니다.
+- 만들어진 Todo item 수정할 수 있도록 구현
 
-```curl
-curl https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos
-  \ -X 'GET'
-```
+</br>
 
-요청 데이터 타입 및 예시:
+---
 
-- 없음
+### 🚫 Todo item 개별삭제
 
-응답 데이터 타입 및 예시:
+![개별삭제](https://drive.google.com/uc?id=1Qe4V6zvd0ORpjbgOMmgpA2eQ-sbZHZBX)
 
-```ts
-type ResponseValue = Todo[] // 할 일 목록
+- todo item 개별적으로 삭제할 수 있도록 구현
 
-interface Todo {
-  id: string // 할 일 ID
-  order: number // 할 일 순서
-  title: string // 할 일 제목
-  done: boolean // 할 일 완료 여부
-  createdAt: string // 할 일 생성일
-  updatedAt: string // 할 일 수정일
-}
-```
+</br>
 
-```json
-[
-  {
-    "id": "mnIwaAPIAE1ayQmqekiR",
-    "order": 0,
-    "title": "JS 공부하기",
-    "done": false,
-    "createdAt": "2021-10-28T05:18:51.868Z",
-    "updatedAt": "2021-10-28T05:18:51.868Z"
-  },
-  {
-    "id": "tMzPImGoWtRdJ6yyVv2y",
-    "order": 1,
-    "title": "과제 PullRequest(PR) 생성",
-    "done": true,
-    "createdAt": "2021-10-28T04:16:53.980Z",
-    "updatedAt": "2021-10-28T09:40:17.955Z"
-  },
-  {
-    "id": "Rq8BebKihCgteHHhMIRS",
-    "order": 2,
-    "title": "API 스터디",
-    "done": false,
-    "createdAt": "2021-10-28T04:17:02.510Z",
-    "updatedAt": "2021-10-28T04:17:02.510Z"
-  }
-]
-```
+---
 
-### 목록 순서 변경
+### ✅ Todo Check
 
-할 일 목록의 순서를 변경합니다.
+![개별선택](https://drive.google.com/uc?id=1uVRQGVuHG1CpFlNtCKmX4vrNeSt8-YFe)
 
-```curl
-curl https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/reorder
-  \ -X 'PUT'
-```
+- Check 시 로딩 애니메이션 구현
 
-요청 데이터 타입 및 예시:
+</br>
 
-```ts
-interface RequestBody {
-  todoIds: string[] // 새롭게 정렬할 할 일 ID 목록 (필수!)
-}
-```
+---
 
-```json
-{
-  "todoIds": [
-    "mnIwaAPIAE1ayQmqekiR",
-    "tMzPImGoWtRdJ6yyVv2y",
-    "GHrvr3LaPx1g7y2sNuaC",
-    "Rq8BebKihCgteHHhMIRS"
-  ]
-}
-```
+### 🛒 완료된 Todo, 비완료된 Todo 분류
 
-응답 데이터 타입 및 예시:
+![선택항목분류](https://drive.google.com/uc?id=1V-NUyGgxu-6UcNJxJU4OM-H-mEqkrHXB)
 
-```ts
-type ResponseValue = true // 순서 변경 여부
-```
+- 완료된 Todo item들과 비완료된 Todo item 분류하여 볼 수 있도록 구현
 
-### 항목 추가
+</br>
 
-할 일 항목을 새롭게 추가합니다.
+---
 
-```curl
-curl https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos
-  \ -X 'POST'
-```
+### 🗑 완료된 Todo item 모두 삭제
 
-요청 데이터 타입 및 예시:
+![선택삭제](https://drive.google.com/uc?id=1QdWyZkgm5LVWFjB2v1jVGrAB0908nUq2)
 
-```ts
-interface RequestBody {
-  title: string // 할 일 제목 (필수!)
-  order?: number // 할 일 순서
-}
-```
+- 선택된 Todo들만 삭제 가능
+- 삭제될 때까지 로딩 애니메이션 구현
+- 선택된 사항들을 한번에 지우기 때문에 모든 프로미스가 이행한 후 반영되도록 PromiseAll()을 사용
+- 전체 선택 후 삭제도 가능
 
-```json
-{
-  "title": "KDT 과정 설계 미팅",
-  "order": 2
-}
-```
+</br>
 
-응답 데이터 타입 및 예시:
+---
 
-```ts
-interface ResponseValue {
-  id: string
-  order: number
-  title: string
-  done: boolean
-  createdAt: string
-  updatedAt: string
-}
-```
+### 👋🏻 전체 Todo item 선택, 해제
 
-```json
-{
-  "id": "7P8dOM4voAv8a8cfoeKZ",
-  "order": 0,
-  "title": "KDT 과정 설계 미팅",
-  "done": false,
-  "createdAt": "2021-10-29T07:20:02.749Z",
-  "updatedAt": "2021-10-29T07:20:02.749Z"
-}
-```
+![전체선택](https://drive.google.com/uc?id=10XDUtRm0LO2v-sxvDegpza8bqXztV7tr)
 
-### 항목 수정
+- 전체 Todo item을 선택하고 해제할 수 있도록 구현
+- 여러 item 삭제를 하는 것처럼 모든 프로미스가 이행한 후 반영되도록 PromiseAll()을 사용
 
-특정 할 일 항목을 수정합니다.
+</br>
 
-```curl
-curl https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/:todoId
-  \ -X 'PUT'
-```
+---
 
-요청 데이터 타입 및 예시:
+### ⛓ SortableJs 라이브러리로 Drag-and-drop reorderable 구현
 
-```ts
-interface RequestBody {
-  title: string // 할 일 제목 (필수!)
-  done: boolean // 할 일 완료 여부 (필수!)
-  order?: number // 할 일 순서
-}
-```
+![sortablejs](https://drive.google.com/uc?id=1I8gwbgq3lFwfpz3OfVIZfYbk4X1AwVGb)
 
-```json
-{
-  "title": "Bootstrap 스타일 추가",
-  "done": false,
-  "order": 2
-}
-```
+- 목록을 재 정렬할 수 있도록 구현
 
-응답 데이터 타입 및 예시:
+</br>
 
-```json
-{
-  "id": "7P8dOM4voAv8a8cfoeKZ",
-  "title": "Bootstrap 스타일 추가",
-  "done": false,
-  "order": 2,
-  "createdAt": "2021-10-29T07:20:02.749Z",
-  "updatedAt": "2021-10-29T07:20:02.749Z"
-}
-```
+---
 
-### 항목 삭제
+### 🔎 자세히보기
 
-특정 할 일 항목을 삭제합니다.
+![자세히보기](https://drive.google.com/uc?id=19G663KzqRwR4zfrNRvQnmbqzTUcb_5fm)
 
-```curl
-curl https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/:todoId
-  \ -X 'DELETE'
-```
+- 자세히보기에 생성된날짜, 수정된날짜 표기
 
-요청 데이터 타입 및 예시:
+</br>
 
-- 없음
+---
 
-응답 데이터 타입 및 예시:
+---
 
-```ts
-type ResponseValue = true
-```
+### 👍🏻 프로젝트 진행 Review
+
+- API를 사용하여 비동기, 네트워크 요청 등을 공부하면서 자연스럽게 Promise를 사용하는데에 공부를 할 수 있었습니다.
+- Promise.all()을 통해서 여러개의 비동기 처리를 진행할때 대응해야하는 방법들도 알게 되었습니다.(제대로 사용한건지는 아직 모르겠습니다..!)
+- 현재 코드에서도 리팩토링을 진행하고 모듈로 나누어볼 생각입니다.
+- 이번 과제를 진행하면서 코드를 재사용이 가능하도록 최대한 개별적으로 구현했는데 아직도 부족한것 같습니다.
+- 첫 로직을 짤때 여러 상황들을 더 고려해야한다는걸 알게되었습니다.
+- 아직 고치지 못한 에러들도 리팩토링을 하면서 정리하도록 하겠습니다.!
+
+- SortableJS 라이브러리로 순서를 변경 후 새로고침 또는 데이터가 갱신될때마다 원래 순서대로 돌아가는것 해결
+- done값을 받아서 boolean값에 따라 checked를 구현했는데 렌더링이 될때마다 true, false를 string으로 인식하는 오류 해결
